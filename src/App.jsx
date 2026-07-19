@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
 import PageTransition from './components/layout/PageTransition'
+import SplashScreen from './components/ui/SplashScreen'
 import HomePage from './pages/HomePage'
 import ShopPage from './pages/ShopPage'
 import ProductPage from './pages/ProductPage'
@@ -11,6 +12,7 @@ import AboutPage from './pages/AboutPage'
 import ContactPage from './pages/ContactPage'
 import CartPage from './pages/CartPage'
 import BlogPage from './pages/BlogPage'
+import AdminPage from './pages/AdminPage'
 import useScrollProgress from './hooks/useScrollProgress'
 import useMediaQuery from './hooks/useMediaQuery'
 
@@ -39,7 +41,6 @@ function CustomCursor() {
     }
   }, [])
 
-  // Toggle body class to hide native cursor only after custom cursor is ready
   useEffect(() => {
     if (ready && !isMobile) {
       document.body.classList.add('cursor-hidden')
@@ -87,19 +88,22 @@ function ScrollToTop() {
 export default function App() {
   const progress = useScrollProgress()
   const location = useLocation()
+  const isAdmin = location.pathname === '/admin'
 
   return (
     <div className="relative">
+      <SplashScreen />
       <CustomCursor />
       <ScrollToTop />
 
-      {/* Reading progress bar */}
-      <motion.div
-        className="fixed top-0 left-0 h-[2px] bg-terracotta z-[60]"
-        style={{ width: `${progress * 100}%` }}
-      />
+      {!isAdmin && (
+        <motion.div
+          className="fixed top-0 left-0 h-[2px] bg-terracotta z-[60]"
+          style={{ width: `${progress * 100}%` }}
+        />
+      )}
 
-      <Navbar />
+      {!isAdmin && <Navbar />}
 
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
@@ -110,10 +114,11 @@ export default function App() {
           <Route path="/contact" element={<PageTransition><ContactPage /></PageTransition>} />
           <Route path="/cart" element={<PageTransition><CartPage /></PageTransition>} />
           <Route path="/blog" element={<PageTransition><BlogPage /></PageTransition>} />
+          <Route path="/admin" element={<AdminPage />} />
         </Routes>
       </AnimatePresence>
 
-      <Footer />
+      {!isAdmin && <Footer />}
     </div>
   )
 }

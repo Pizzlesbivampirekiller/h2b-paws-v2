@@ -1,12 +1,13 @@
 import { useState, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { SlidersHorizontal, X } from 'lucide-react'
-import { products } from '../../data/products'
+import { useAdmin } from '../../context/AdminContext'
 import ProductCard from './ProductCard'
 import FilterSidebar from './FilterSidebar'
 import ScrollReveal from '../ui/ScrollReveal'
 
 export default function ProductGrid() {
+  const { products } = useAdmin()
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false)
   const [selectedCategory, setSelectedCategory] = useState('all')
   const [sortBy, setSortBy] = useState('featured')

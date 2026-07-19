@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ArrowRight, Star } from 'lucide-react'
-import { products } from '../../data/products'
+import { useAdmin } from '../../context/AdminContext'
 import TiltCard from '../ui/TiltCard'
 import ScrollReveal from '../ui/ScrollReveal'
 import SectionHeading from '../ui/SectionHeading'
 
 export default function FeaturedProducts() {
+  const { products } = useAdmin()
   const featured = products.filter((p) => p.featured)
 
   return (

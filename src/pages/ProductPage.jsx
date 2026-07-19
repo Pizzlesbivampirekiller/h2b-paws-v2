@@ -2,8 +2,8 @@ import { useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Star, ShoppingCart, Heart, Share2, ChevronRight, ArrowLeft, Check } from 'lucide-react'
-import { getProductBySlug, getRelatedProducts } from '../data/products'
 import { useCart } from '../context/CartContext'
+import { useAdmin } from '../context/AdminContext'
 import ProductViewer3D from '../components/shop/ProductViewer3D'
 import ProductCard from '../components/shop/ProductCard'
 import Button from '../components/ui/Button'
@@ -12,7 +12,9 @@ import Confetti from '../components/ui/Confetti'
 
 export default function ProductPage() {
   const { id } = useParams()
-  const product = getProductBySlug(id)
+  const { products } = useAdmin()
+  const product = products.find(p => p.slug === id)
+  const related = products.filter(p => p.category === product?.category && p.id !== product?.id).slice(0, 4)
   const { addItem } = useCart()
 
   const [selectedSize, setSelectedSize] = useState(product?.sizes?.[0] || 'Standard')
@@ -30,8 +32,6 @@ export default function ProductPage() {
       </div>
     )
   }
-
-  const related = getRelatedProducts(product)
 
   const handleAddToCart = () => {
     addItem(product, selectedSize, selectedColor)

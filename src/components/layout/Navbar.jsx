@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ShoppingBag, Menu, X, PawPrint } from 'lucide-react'
+import { ShoppingBag, Menu, X } from 'lucide-react'
 import { useCart } from '../../context/CartContext'
 import CartDrawer from './CartDrawer'
 
 const navLinks = [
   { path: '/', label: 'Home' },
-  { path: '/shop', label: 'Shop' },
+  { path: 'https://shop.h2bpaws.com', label: 'Shop', external: true },
   { path: '/about', label: 'About' },
   { path: '/blog', label: 'Journal' },
   { path: '/contact', label: 'Contact' },
@@ -53,7 +53,7 @@ export default function Navbar() {
 
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2 group cursor-pointer">
-              <PawPrint size={28} className="text-terracotta transition-transform group-hover:rotate-12" />
+              <img src="/logo.png" alt="H2B Paws" className="h-7 w-auto transition-transform group-hover:scale-105" />
               <span className="font-serif text-xl font-semibold tracking-tight text-charcoal">
                 H2B <span className="text-terracotta">Paws</span>
               </span>
@@ -61,23 +61,35 @@ export default function Navbar() {
 
             {/* Desktop nav */}
             <div className="hidden lg:flex items-center gap-8">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.path}
-                  to={link.path}
-                  className={`relative text-sm font-medium tracking-wide uppercase transition-colors cursor-pointer ${
-                    location.pathname === link.path ? 'text-terracotta' : 'text-charcoal/70 hover:text-charcoal'
-                  }`}
-                >
-                  {link.label}
-                  {location.pathname === link.path && (
-                    <motion.div
-                      layoutId="nav-indicator"
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-terracotta rounded-full"
-                    />
-                  )}
-                </Link>
-              ))}
+              {navLinks.map((link) =>
+                link.external ? (
+                  <a
+                    key={link.path}
+                    href={link.path}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="relative text-sm font-medium tracking-wide uppercase transition-colors cursor-pointer text-charcoal/70 hover:text-charcoal"
+                  >
+                    {link.label}
+                  </a>
+                ) : (
+                  <Link
+                    key={link.path}
+                    to={link.path}
+                    className={`relative text-sm font-medium tracking-wide uppercase transition-colors cursor-pointer ${
+                      location.pathname === link.path ? 'text-terracotta' : 'text-charcoal/70 hover:text-charcoal'
+                    }`}
+                  >
+                    {link.label}
+                    {location.pathname === link.path && (
+                      <motion.div
+                        layoutId="nav-indicator"
+                        className="absolute -bottom-1 left-0 right-0 h-0.5 bg-terracotta rounded-full"
+                      />
+                    )}
+                  </Link>
+                )
+              )}
             </div>
 
             {/* Cart + CTA */}
@@ -139,7 +151,7 @@ export default function Navbar() {
             >
               <div className="flex items-center justify-between mb-12">
                 <Link to="/" className="flex items-center gap-2 cursor-pointer" onClick={() => setMobileOpen(false)}>
-                  <PawPrint size={24} className="text-terracotta" />
+                  <img src="/logo.png" alt="H2B Paws" className="h-6 w-auto" />
                   <span className="font-serif text-lg font-semibold">H2B Paws</span>
                 </Link>
                 <button onClick={() => setMobileOpen(false)} className="p-2 cursor-pointer" aria-label="Close menu">

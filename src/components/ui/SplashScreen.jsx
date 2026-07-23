@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { PawPrint } from 'lucide-react'
+import { useAdmin } from '../../context/AdminContext'
 
 export default function SplashScreen() {
+  const { siteContent } = useAdmin()
   const [show, setShow] = useState(true)
   const [exit, setExit] = useState(false)
 
@@ -67,7 +68,7 @@ export default function SplashScreen() {
               transition={{ duration: 0.8, ease: [0.34, 1.56, 0.64, 1] }}
               className="mb-8"
             >
-              <PawPrint size={64} className="text-terracotta mx-auto" />
+              <img src="/logo.png" alt="H2B Paws" className="h-20 w-auto mx-auto brightness-0 invert" />
             </motion.div>
 
             <motion.div
@@ -86,7 +87,7 @@ export default function SplashScreen() {
               transition={{ delay: 0.7, duration: 0.8 }}
               className="text-cream/40 text-lg sm:text-xl lg:text-2xl font-light tracking-[0.3em] uppercase"
             >
-              Every Degree Matters
+              {siteContent.splashSlogan}
             </motion.p>
 
             <motion.p

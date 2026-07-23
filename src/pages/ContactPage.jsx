@@ -5,6 +5,7 @@ import GlobeMap from '../components/contact/GlobeMap'
 import FAQAccordion from '../components/contact/FAQAccordion'
 import ScrollReveal from '../components/ui/ScrollReveal'
 import SectionHeading from '../components/ui/SectionHeading'
+import { useAdmin } from '../context/AdminContext'
 
 const contactInfo = [
   { icon: MapPin, label: 'Visit Us', value: '127 Wooster Street\nSoHo, New York, NY 10012' },
@@ -14,6 +15,9 @@ const contactInfo = [
 ]
 
 export default function ContactPage() {
+  const { siteContent } = useAdmin()
+  const bgImage = siteContent.bgContact || ''
+
   return (
     <main className="min-h-screen">
       {/* Hero */}
@@ -32,17 +36,12 @@ export default function ContactPage() {
             transition={{ delay: 0.1 }}
             className="font-serif text-4xl lg:text-6xl font-semibold text-cream mt-4 mb-6"
           >
-            We'd love to hear
-            <br />
-            from you
+            {siteContent.contactTitle.split('\n').map((line, i) => (
+              <span key={i}>{line}<br /></span>
+            ))}
           </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="text-cream/50 text-lg max-w-xl mx-auto"
-          >
-            Whether it's a question about sizing, a custom order request, or just saying hello — our team is here.
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="text-cream/50 text-lg max-w-xl mx-auto">
+            {siteContent.contactDesc}
           </motion.p>
         </div>
       </section>

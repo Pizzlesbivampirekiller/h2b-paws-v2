@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom'
-import { PawPrint, Camera, MessageCircle, Film, Mail, ArrowRight } from 'lucide-react'
+import { Camera, MessageCircle, Film, Mail, ArrowRight } from 'lucide-react'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import { useAdmin } from '../../context/AdminContext'
 
 const footerLinks = {
   Shop: [
-    { label: 'All Products', path: '/shop' },
+    { label: 'All Products', path: 'https://shop.h2bpaws.com', external: true },
     { label: 'Collars & Leashes', path: '/shop?category=accessories' },
     { label: 'Beds & Mats', path: '/shop?category=beds' },
     { label: 'Food & Treats', path: '/shop?category=food' },
@@ -28,6 +29,7 @@ const footerLinks = {
 }
 
 export default function Footer() {
+  const { siteContent } = useAdmin()
   const [email, setEmail] = useState('')
   const [subscribed, setSubscribed] = useState(false)
 
@@ -51,10 +53,10 @@ export default function Footer() {
               viewport={{ once: true }}
               className="font-serif text-3xl lg:text-4xl text-cream mb-4"
             >
-              Join the H2B Pack
+              {siteContent.footerTitle}
             </motion.h2>
             <p className="text-cream/50 mb-8">
-              Subscribe for early access to new collections, exclusive offers, and pet care insights.
+              {siteContent.footerDesc}
             </p>
             <form onSubmit={handleSubscribe} className="flex gap-2 max-w-md mx-auto">
               <div className="flex-1 relative">
@@ -81,7 +83,7 @@ export default function Footer() {
         <div className="py-16 grid grid-cols-2 md:grid-cols-4 gap-10">
           <div className="col-span-2 md:col-span-1">
             <Link to="/" className="flex items-center gap-2 mb-4 cursor-pointer">
-              <PawPrint size={24} className="text-terracotta" />
+              <img src="/logo.png" alt="H2B Paws" className="h-6 w-auto" />
               <span className="font-serif text-xl font-semibold text-cream">H2B Paws</span>
             </Link>
             <p className="text-cream/40 text-sm leading-relaxed mb-6">
@@ -105,12 +107,15 @@ export default function Footer() {
               <ul className="space-y-3">
                 {links.map((link) => (
                   <li key={link.label}>
-                    <Link
-                      to={link.path}
-                      className="text-sm text-cream/40 hover:text-terracotta transition-colors cursor-pointer"
-                    >
-                      {link.label}
-                    </Link>
+                    {link.external ? (
+                      <a href={link.path} target="_blank" rel="noopener noreferrer" className="text-sm text-cream/40 hover:text-terracotta transition-colors cursor-pointer">
+                        {link.label}
+                      </a>
+                    ) : (
+                      <Link to={link.path} className="text-sm text-cream/40 hover:text-terracotta transition-colors cursor-pointer">
+                        {link.label}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>

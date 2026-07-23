@@ -2,6 +2,7 @@ import { useRef, useEffect } from 'react'
 import { Star } from 'lucide-react'
 import { testimonials } from '../../data/testimonials'
 import SectionHeading from '../ui/SectionHeading'
+import { useAdmin } from '../../context/AdminContext'
 
 function MarqueeRow({ items, reverse = false }) {
   const scrollRef = useRef(null)
@@ -64,6 +65,7 @@ function MarqueeRow({ items, reverse = false }) {
 }
 
 export default function TestimonialMarquee() {
+  const { siteContent } = useAdmin()
   const firstHalf = testimonials.slice(0, 3)
   const secondHalf = testimonials.slice(3)
 
@@ -71,8 +73,8 @@ export default function TestimonialMarquee() {
     <section className="py-24 lg:py-32 bg-cream overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 mb-10">
         <SectionHeading
-          subtitle="Testimonials"
-          title="Loved by Pets & Parents"
+          subtitle={siteContent.testimonialsSubtitle}
+          title={siteContent.testimonialsTitle}
           description="Hear from our community of discerning pet families."
         />
       </div>

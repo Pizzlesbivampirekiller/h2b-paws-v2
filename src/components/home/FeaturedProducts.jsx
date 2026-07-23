@@ -7,16 +7,16 @@ import ScrollReveal from '../ui/ScrollReveal'
 import SectionHeading from '../ui/SectionHeading'
 
 export default function FeaturedProducts() {
-  const { products } = useAdmin()
+  const { products, siteContent } = useAdmin()
   const featured = products.filter((p) => p.featured)
 
   return (
     <section className="py-24 lg:py-32 bg-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <SectionHeading
-          subtitle="Curated Selection"
-          title="Featured Favorites"
-          description="Our most-loved pieces, handpicked for quality and style."
+          subtitle={siteContent.featuredSubtitle}
+          title={siteContent.featuredTitle}
+          description={siteContent.featuredDesc}
         />
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -62,12 +62,13 @@ export default function FeaturedProducts() {
         </div>
 
         <ScrollReveal className="text-center mt-12">
-          <Link
-            to="/shop"
+          <a
+            href="https://shop.h2bpaws.com"
+            target="_blank" rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-terracotta font-medium hover:gap-3 transition-all cursor-pointer"
           >
             View All Products <ArrowRight size={18} />
-          </Link>
+          </a>
         </ScrollReveal>
       </div>
     </section>

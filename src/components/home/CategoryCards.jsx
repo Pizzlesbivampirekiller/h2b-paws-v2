@@ -4,6 +4,7 @@ import { ArrowRight } from 'lucide-react'
 import { categories } from '../../data/products'
 import ScrollReveal from '../ui/ScrollReveal'
 import SectionHeading from '../ui/SectionHeading'
+import { useAdmin } from '../../context/AdminContext'
 
 const categoryImages = {
   accessories: 'https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=600&h=800&fit=crop',
@@ -16,13 +17,14 @@ const categoryImages = {
 const displayCategories = categories.filter((c) => c.id !== 'all')
 
 export default function CategoryCards() {
+  const { siteContent } = useAdmin()
   return (
     <section className="py-24 lg:py-32 bg-cream">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <SectionHeading
-          subtitle="Browse By"
-          title="Shop by Category"
-          description="Find exactly what your companion needs."
+          subtitle={siteContent.categoriesSubtitle}
+          title={siteContent.categoriesTitle}
+          description={siteContent.categoriesDesc}
         />
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -62,7 +64,7 @@ export default function CategoryCards() {
 
         {/* Full-width banner */}
         <ScrollReveal className="mt-6">
-          <Link to="/shop" className="block group cursor-pointer">
+          <a href="https://shop.h2bpaws.com" target="_blank" rel="noopener noreferrer" className="block group cursor-pointer">
             <div className="relative overflow-hidden rounded-3xl h-48 lg:h-64 bg-gradient-to-r from-terracotta via-terracotta-dark to-charcoal">
               <div className="absolute inset-0 flex items-center justify-center text-center p-8">
                 <div>
@@ -73,7 +75,7 @@ export default function CategoryCards() {
                 </div>
               </div>
             </div>
-          </Link>
+          </a>
         </ScrollReveal>
       </div>
     </section>

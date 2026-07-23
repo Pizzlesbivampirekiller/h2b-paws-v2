@@ -8,41 +8,50 @@ const AUTH_KEY = 'h2b-admin-auth'
 const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3000'
 
 const defaultContent = {
-  splashSlogan: 'Every Degree Matters',
-  heroBadge: 'Pet',
-  heroHeadline1: '1',
-  heroHeadlineItalic: '23',
-  heroSubheading: 'Thoughtfully crafted essentials for the modern pet.',
-  heroCta1: 'Explore Collection',
-  heroCta2: 'Our Story',
-  heroStats: [
-    { value: '10K+', label: 'Happy Pets' },
-    { value: '40+', label: 'Countries' },
-    { value: '4.9', label: 'Avg. Rating' },
+  "splashSlogan": "Every Degree Matters",
+  "heroBadge": "Pet",
+  "heroHeadline1": "1",
+  "heroHeadlineItalic": "231",
+  "heroSubheading": "Thoughtfully crafted essentials for the modern pet.",
+  "heroCta1": "Explore Collection",
+  "heroCta2": "Our Story",
+  "heroStats": [
+    {
+      "value": "10K+",
+      "label": "Happy Pets"
+    },
+    {
+      "value": "40+",
+      "label": "Countries"
+    },
+    {
+      "value": "4.9",
+      "label": "Avg. Rating"
+    }
   ],
-  featuredSubtitle: 'Curated Selection',
-  featuredTitle: 'Featured Favorites',
-  featuredDesc: 'Our most-loved pieces.',
-  categoriesSubtitle: 'Browse By',
-  categoriesTitle: 'Shop',
-  categoriesDesc: 'Find exactly what your companion needs.',
-  testimonialsSubtitle: 'Testimonials',
-  testimonialsTitle: 'Loved by Pets & Parents',
-  ctaHeadline: 'Ready to treat\nyour companion to\nthe best?',
-  ctaHeadlineItalic: 'the best',
-  ctaSubheading: "Join 10,000+ pet parents who've upgraded their companion's lifestyle.",
-  aboutTitle: 'Crafting luxury for the modern companion',
-  aboutDesc: 'Born from a belief that pets deserve the best.',
-  contactTitle: "We'd love to hear from you",
-  contactDesc: "Whether it's a question about sizing, a custom order request, or just saying hello.",
-  footerTitle: 'Join the H2B Pack',
-  footerDesc: 'Subscribe for early access.',
-  shopTitle: 'Shop H2B Paws',
-  shopSubtitle: 'Premium Essentials',
-  shopDesc: 'Browse our collection.',
-  bgCta: '',
-  bgAbout: '',
-  bgContact: '',
+  "featuredSubtitle": "Curated Selection",
+  "featuredTitle": "Featured Favorites",
+  "featuredDesc": "Our most-loved pieces.",
+  "categoriesSubtitle": "Browse By",
+  "categoriesTitle": "Shop",
+  "categoriesDesc": "Find exactly what your companion needs.",
+  "testimonialsSubtitle": "Testimonials",
+  "testimonialsTitle": "Loved by Pets & Parents",
+  "ctaHeadline": "Ready to treat\nyour companion to\nthe best?",
+  "ctaHeadlineItalic": "the best",
+  "ctaSubheading": "Join 10,000+ pet parents who've upgraded their companion's lifestyle.",
+  "aboutTitle": "Crafting luxury for the modern companion",
+  "aboutDesc": "Born from a belief that pets deserve the best.",
+  "contactTitle": "We'd love to hear from you",
+  "contactDesc": "Whether it's a question about sizing, a custom order request, or just saying hello.",
+  "footerTitle": "Join the H2B Pack",
+  "footerDesc": "Subscribe for early access.",
+  "shopTitle": "Shop H2B Paws",
+  "shopSubtitle": "Premium Essentials",
+  "shopDesc": "Browse our collection.",
+  "bgCta": "",
+  "bgAbout": "",
+  "bgContact": ""
 }
 
 async function apiFetch(path, options = {}) {

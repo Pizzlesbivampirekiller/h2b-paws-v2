@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #FAF7F2;
+  --color-charcoal: #1A1A1A;
+  --color-terracotta: #C47354;
+  --color-terracotta-dark: #A85D3F;
+  --color-sage: #8FA88F;
+  --color-sage-dark: #6E8B6E;
+  --color-sand: #E8D5C4;
+  --color-golden: #D4A853;
+  --color-cloud: #FFFFFF;
+
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: #FAF7F2;
+  color: #1A1A1A;
+  overflow-x: hidden;
+}
+
+/* Native cursor hidden only after custom cursor activates */
+body.cursor-hidden {
+  cursor: none;
+}
+
+body.cursor-hidden * {
+  cursor: none !important;
+}
+
+/* Custom cursor styles */
+.custom-cursor {
+  width: 32px;
+  height: 32px;
+  border: 2px solid #C47354;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  transition: width 0.3s, height 0.3s, border-color 0.3s, background 0.3s;
+}
+
+.custom-cursor.hover {
+  width: 64px;
+  height: 64px;
+  background: rgba(196, 115, 84, 0.15);
+  border-color: #D4A853;
+}
+
+.custom-cursor-dot {
+  width: 6px;
+  height: 6px;
+  background: #C47354;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 10000;
+  top: 0;
+  left: 0;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FAF7F2;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C47354;
+  border-radius: 3px;
+}
+
+::selection {
+  background: #C47354;
+  color: #FFFFFF;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #E8D5C4 25%, #FAF7F2 50%, #E8D5C4 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}

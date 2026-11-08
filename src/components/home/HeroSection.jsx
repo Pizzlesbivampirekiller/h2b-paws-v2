@@ -1,7 +1,6 @@
 import { useRef, useMemo } from 'react'
 import { motion } from 'framer-motion'
 import { Canvas, useFrame } from '@react-three/fiber'
-import { Link } from 'react-router-dom'
 import { ArrowRight, ChevronDown } from 'lucide-react'
 import ParallaxLayer from '../ui/ParallaxLayer'
 import Button from '../ui/Button'
@@ -70,7 +69,6 @@ export default function HeroSection() {
 
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8, duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }} className="flex flex-wrap gap-4">
               <a href="https://shop.h2bpaws.com" target="_blank" rel="noopener noreferrer"><Button variant="terracotta" size="lg">{siteContent.heroCta1}<ArrowRight size={18} /></Button></a>
-              <Link to="/about"><Button variant="outline" size="lg">{siteContent.heroCta2}</Button></Link>
             </motion.div>
 
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2, duration: 1 }} className="flex gap-10 mt-16 pt-10 border-t border-charcoal/10">

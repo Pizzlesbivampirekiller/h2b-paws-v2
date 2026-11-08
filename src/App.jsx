@@ -8,7 +8,6 @@ import SplashScreen from './components/ui/SplashScreen'
 import HomePage from './pages/HomePage'
 import ShopPage from './pages/ShopPage'
 import ProductPage from './pages/ProductPage'
-import AboutPage from './pages/AboutPage'
 import ContactPage from './pages/ContactPage'
 import CartPage from './pages/CartPage'
 import BlogPage from './pages/BlogPage'
@@ -110,7 +109,6 @@ export default function App() {
           <Route path="/" element={<PageTransition><HomePage /></PageTransition>} />
           <Route path="/shop" element={<PageTransition><ShopPage /></PageTransition>} />
           <Route path="/shop/:id" element={<PageTransition><ProductPage /></PageTransition>} />
-          <Route path="/about" element={<PageTransition><AboutPage /></PageTransition>} />
           <Route path="/contact" element={<PageTransition><ContactPage /></PageTransition>} />
           <Route path="/cart" element={<PageTransition><CartPage /></PageTransition>} />
           <Route path="/blog" element={<PageTransition><BlogPage /></PageTransition>} />

@@ -13,10 +13,8 @@ const footerLinks = {
     { label: 'Clothing', path: '/shop?category=clothing' },
   ],
   Company: [
-    { label: 'About Us', path: '/about' },
     { label: 'Journal', path: '/blog' },
     { label: 'Contact', path: '/contact' },
-    { label: 'Sustainability', path: '/about' },
     { label: 'Careers', path: '/contact' },
   ],
   Support: [

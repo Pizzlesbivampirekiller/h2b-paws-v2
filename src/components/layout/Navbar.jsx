@@ -8,7 +8,6 @@ import CartDrawer from './CartDrawer'
 const navLinks = [
   { path: '/', label: 'Home' },
   { path: 'https://shop.h2bpaws.com', label: 'Shop', external: true },
-  { path: '/about', label: 'About' },
   { path: '/blog', label: 'Journal' },
   { path: '/contact', label: 'Contact' },
 ]
@@ -19,7 +18,7 @@ export default function Navbar() {
   const [cartOpen, setCartOpen] = useState(false)
   const { itemCount } = useCart()
   const location = useLocation()
-  const darkPages = ['/contact', '/about']
+  const darkPages = ['/contact']
   const isDarkPage = darkPages.includes(location.pathname)
   const textColor = isDarkPage ? 'text-cream/80 hover:text-cream' : 'text-charcoal/70 hover:text-charcoal'
   const bgClass = scrolled ? 'bg-cream/80 backdrop-blur-xl shadow-sm' : (isDarkPage ? 'bg-transparent' : 'bg-transparent')

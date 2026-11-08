@@ -9,7 +9,7 @@ const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3000'
 
 const defaultContent = {
   "splashSlogan": "Every Degree Matters",
-  "heroBadge": "Pet",
+  "heroBadge": "H2b-Paws",
   "heroHeadline1": "Just",
   "heroHeadlineItalic": "Cool It",
   "heroSubheading": "Thoughtfully crafted essentials for the modern pet.",

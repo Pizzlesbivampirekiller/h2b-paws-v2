@@ -11,6 +11,7 @@ import ProductPage from './pages/ProductPage'
 import ContactPage from './pages/ContactPage'
 import CartPage from './pages/CartPage'
 import BlogPage from './pages/BlogPage'
+import BlogPostPage from './pages/BlogPostPage'
 import AdminPage from './pages/AdminPage'
 import useScrollProgress from './hooks/useScrollProgress'
 import useMediaQuery from './hooks/useMediaQuery'
@@ -112,6 +113,7 @@ export default function App() {
           <Route path="/contact" element={<PageTransition><ContactPage /></PageTransition>} />
           <Route path="/cart" element={<PageTransition><CartPage /></PageTransition>} />
           <Route path="/blog" element={<PageTransition><BlogPage /></PageTransition>} />
+          <Route path="/blog/:slug" element={<PageTransition><BlogPostPage /></PageTransition>} />
           <Route path="/admin" element={<AdminPage />} />
         </Routes>
       </AnimatePresence>

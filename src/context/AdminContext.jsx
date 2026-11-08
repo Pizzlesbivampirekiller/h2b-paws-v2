@@ -11,7 +11,7 @@ const defaultContent = {
   "splashSlogan": "Every Degree Matters",
   "heroBadge": "H2b-Paws",
   "heroHeadline1": "Just",
-  "heroHeadlineItalic": "Cool It",
+  "heroHeadlineItalic": "Cool",
   "heroSubheading": "Thoughtfully crafted essentials for the modern pet.",
   "heroCta1": "Explore Collection",
   "heroCta2": "",

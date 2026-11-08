@@ -70,15 +70,6 @@ export default function HeroSection() {
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8, duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }} className="flex flex-wrap gap-4">
               <a href="https://shop.h2bpaws.com" target="_blank" rel="noopener noreferrer"><Button variant="terracotta" size="lg">{siteContent.heroCta1}<ArrowRight size={18} /></Button></a>
             </motion.div>
-
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2, duration: 1 }} className="flex gap-10 mt-16 pt-10 border-t border-charcoal/10">
-              {siteContent.heroStats.map((stat) => (
-                <div key={stat.label}>
-                  <div className="font-serif text-2xl lg:text-3xl font-semibold text-charcoal">{stat.value}</div>
-                  <div className="text-sm text-charcoal/40 mt-1">{stat.label}</div>
-                </div>
-              ))}
-            </motion.div>
           </div>
 
           <ParallaxLayer speed={0.03} className="hidden lg:flex justify-center">

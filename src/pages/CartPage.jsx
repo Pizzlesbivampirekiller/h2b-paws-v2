@@ -7,7 +7,7 @@ import OrderSummary from '../components/cart/OrderSummary'
 import Button from '../components/ui/Button'
 
 export default function CartPage() {
-  const { items, subtotal, removeItem, updateQuantity, clearCart } = useCart()
+  const { items, subtotal, checkoutUrl, removeItem, updateQuantity, clearCart } = useCart()
 
   return (
     <main className="min-h-screen pt-24 lg:pt-28 pb-16 bg-cream">
@@ -48,11 +48,10 @@ export default function CartPage() {
             {/* Cart items */}
             <div className="lg:col-span-2 space-y-4">
               <AnimatePresence>
-                {items.map((item, index) => (
+                {items.map((item) => (
                   <CartItem
-                    key={`${item.id}-${item.selectedSize}-${item.selectedColor}-${index}`}
+                    key={item.id}
                     item={item}
-                    index={index}
                     onUpdateQuantity={updateQuantity}
                     onRemove={removeItem}
                   />
@@ -69,7 +68,7 @@ export default function CartPage() {
 
             {/* Summary */}
             <div>
-              <OrderSummary subtotal={subtotal} />
+              <OrderSummary subtotal={subtotal} checkoutUrl={checkoutUrl} />
             </div>
           </div>
         )}

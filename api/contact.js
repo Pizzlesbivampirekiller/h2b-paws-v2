@@ -1,36 +1,12 @@
 const API_VERSION = '2025-01'
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
-let cachedToken = null
-let tokenExpiresAt = 0
-
-async function getAdminToken() {
-  if (cachedToken && Date.now() < tokenExpiresAt - 60_000) return cachedToken
-
-  const res = await fetch(`https://${process.env.SHOPIFY_STORE_DOMAIN}/admin/oauth/access_token`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: new URLSearchParams({
-      grant_type: 'client_credentials',
-      client_id: process.env.SHOPIFY_CLIENT_ID,
-      client_secret: process.env.SHOPIFY_CLIENT_SECRET,
-    }),
-  })
-  const body = await res.json().catch(() => ({}))
-  if (!res.ok || !body.access_token) throw new Error(`Shopify token request failed: ${res.status}`)
-
-  cachedToken = body.access_token
-  tokenExpiresAt = Date.now() + (body.expires_in ?? 86400) * 1000
-  return cachedToken
-}
-
 async function shopifyAdmin(path, options = {}) {
-  const token = await getAdminToken()
   const res = await fetch(`https://${process.env.SHOPIFY_STORE_DOMAIN}/admin/api/${API_VERSION}/${path}`, {
     ...options,
     headers: {
       'Content-Type': 'application/json',
-      'X-Shopify-Access-Token': token,
+      'X-Shopify-Access-Token': process.env.SHOPIFY_ADMIN_TOKEN,
     },
   })
   const body = await res.json().catch(() => ({}))
@@ -54,8 +30,8 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Please fill in your name, a valid email and a message.' })
   }
 
-  if (!process.env.SHOPIFY_STORE_DOMAIN || !process.env.SHOPIFY_CLIENT_ID || !process.env.SHOPIFY_CLIENT_SECRET) {
-    console.error('Contact form: SHOPIFY_STORE_DOMAIN, SHOPIFY_CLIENT_ID or SHOPIFY_CLIENT_SECRET is missing')
+  if (!process.env.SHOPIFY_STORE_DOMAIN || !process.env.SHOPIFY_ADMIN_TOKEN) {
+    console.error('Contact form: SHOPIFY_STORE_DOMAIN or SHOPIFY_ADMIN_TOKEN is missing')
     return res.status(500).json({ error: 'Contact form is not configured yet.' })
   }
 

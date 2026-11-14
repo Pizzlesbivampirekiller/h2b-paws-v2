@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import ScrollReveal from '../ui/ScrollReveal'
 import SectionHeading from '../ui/SectionHeading'
@@ -15,7 +16,7 @@ export default function CategoryCards() {
         />
 
         <ScrollReveal className="mt-6">
-          <a href="https://shop.h2bpaws.com" target="_blank" rel="noopener noreferrer" className="block group cursor-pointer">
+          <Link to="/shop" className="block group cursor-pointer">
             <div className="relative overflow-hidden rounded-3xl h-48 lg:h-64 bg-gradient-to-r from-terracotta via-terracotta-dark to-charcoal">
               <div className="absolute inset-0 flex items-center justify-center text-center p-8">
                 <div>
@@ -26,7 +27,7 @@ export default function CategoryCards() {
                 </div>
               </div>
             </div>
-          </a>
+          </Link>
         </ScrollReveal>
       </div>
     </section>

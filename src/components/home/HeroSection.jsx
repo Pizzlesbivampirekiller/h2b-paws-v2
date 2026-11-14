@@ -1,4 +1,5 @@
 import { useRef, useMemo } from 'react'
+import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { ArrowRight, ChevronDown } from 'lucide-react'
@@ -68,7 +69,7 @@ export default function HeroSection() {
             </motion.p>
 
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8, duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }} className="flex flex-wrap gap-4">
-              <a href="https://shop.h2bpaws.com" target="_blank" rel="noopener noreferrer"><Button variant="terracotta" size="lg">{siteContent.heroCta1}<ArrowRight size={18} /></Button></a>
+              <Link to="/shop"><Button variant="terracotta" size="lg">{siteContent.heroCta1}<ArrowRight size={18} /></Button></Link>
             </motion.div>
           </div>
 

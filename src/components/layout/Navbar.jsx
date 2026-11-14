@@ -7,7 +7,7 @@ import CartDrawer from './CartDrawer'
 
 const navLinks = [
   { path: '/', label: 'Home' },
-  { path: 'https://shop.h2bpaws.com', label: 'Shop', external: true },
+  { path: '/shop', label: 'Shop' },
   { path: '/blog', label: 'Journal' },
   { path: '/contact', label: 'Contact' },
 ]
@@ -64,35 +64,23 @@ export default function Navbar() {
 
             {/* Desktop nav */}
             <div className="hidden lg:flex items-center gap-8">
-              {navLinks.map((link) =>
-                link.external ? (
-                  <a
-                    key={link.path}
-                    href={link.path}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`relative text-sm font-medium tracking-wide uppercase transition-colors cursor-pointer ${textColor}`}
-                  >
-                    {link.label}
-                  </a>
-                ) : (
-                  <Link
-                    key={link.path}
-                    to={link.path}
-                    className={`relative text-sm font-medium tracking-wide uppercase transition-colors cursor-pointer ${
-                      location.pathname === link.path ? 'text-terracotta' : textColor
-                    }`}
-                  >
-                    {link.label}
-                    {location.pathname === link.path && (
-                      <motion.div
-                        layoutId="nav-indicator"
-                        className="absolute -bottom-1 left-0 right-0 h-0.5 bg-terracotta rounded-full"
-                      />
-                    )}
-                  </Link>
-                )
-              )}
+              {navLinks.map((link) => (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  className={`relative text-sm font-medium tracking-wide uppercase transition-colors cursor-pointer ${
+                    location.pathname === link.path ? 'text-terracotta' : textColor
+                  }`}
+                >
+                  {link.label}
+                  {location.pathname === link.path && (
+                    <motion.div
+                      layoutId="nav-indicator"
+                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-terracotta rounded-full"
+                    />
+                  )}
+                </Link>
+              ))}
             </div>
 
             {/* Cart + CTA */}

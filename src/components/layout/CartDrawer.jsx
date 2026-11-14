@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, ShoppingBag, Trash2, Minus, Plus } from 'lucide-react'
 import { useCart } from '../../context/CartContext'
+import { formatPrice } from '../../lib/format'
 
 export default function CartDrawer({ open, onClose }) {
   const { items, itemCount, subtotal, removeItem, updateQuantity } = useCart()
@@ -47,9 +48,9 @@ export default function CartDrawer({ open, onClose }) {
                 </div>
               ) : (
                 <div className="space-y-4">
-                  {items.map((item, index) => (
+                  {items.map((item) => (
                     <motion.div
-                      key={`${item.id}-${item.selectedSize}-${item.selectedColor}-${index}`}
+                      key={item.id}
                       layout
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -57,40 +58,35 @@ export default function CartDrawer({ open, onClose }) {
                       className="flex gap-4 p-3 rounded-2xl bg-white"
                     >
                       <img
-                        src={item.images?.[0]}
-                        alt={item.name}
+                        src={item.image}
+                        alt={item.title}
                         className="w-20 h-20 rounded-xl object-cover"
                       />
                       <div className="flex-1 min-w-0">
-                        <h4 className="font-medium text-sm truncate">{item.name}</h4>
-                        <div className="flex gap-2 mt-1 text-xs text-charcoal/50">
-                          {item.selectedSize && <span>Size: {item.selectedSize}</span>}
-                          {item.selectedColor && (
-                            <span className="flex items-center gap-1">
-                              Color: <span className="w-3 h-3 rounded-full border border-sand" style={{ backgroundColor: item.selectedColor }} />
-                            </span>
-                          )}
-                        </div>
+                        <h4 className="font-medium text-sm truncate">{item.title}</h4>
+                        {item.variantTitle !== 'Default Title' && (
+                          <p className="mt-1 text-xs text-charcoal/50">{item.variantTitle}</p>
+                        )}
                         <div className="flex items-center justify-between mt-3">
                           <div className="flex items-center gap-1 border border-sand rounded-full">
                             <button
-                              onClick={() => updateQuantity(index, item.quantity - 1)}
+                              onClick={() => updateQuantity(item.id, item.quantity - 1)}
                               className="p-1 hover:text-terracotta transition-colors cursor-pointer"
                             >
                               <Minus size={14} />
                             </button>
                             <span className="text-sm font-medium w-6 text-center">{item.quantity}</span>
                             <button
-                              onClick={() => updateQuantity(index, item.quantity + 1)}
+                              onClick={() => updateQuantity(item.id, item.quantity + 1)}
                               className="p-1 hover:text-terracotta transition-colors cursor-pointer"
                             >
                               <Plus size={14} />
                             </button>
                           </div>
                           <div className="flex items-center gap-2">
-                            <span className="font-semibold text-sm">${item.price * item.quantity}</span>
+                            <span className="font-semibold text-sm">{formatPrice(item.price * item.quantity)}</span>
                             <button
-                              onClick={() => removeItem(index)}
+                              onClick={() => removeItem(item.id)}
                               className="p-1 text-charcoal/30 hover:text-red-500 transition-colors cursor-pointer"
                             >
                               <Trash2 size={14} />

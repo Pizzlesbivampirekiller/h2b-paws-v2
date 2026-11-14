@@ -1,71 +1,59 @@
-import { createContext, useContext, useReducer, useEffect } from 'react'
+import { createContext, useContext, useEffect, useState } from 'react'
+import { addCartLine, createCart, fetchCart, removeCartLine, updateCartLine } from '../lib/shopify'
 
 const CartContext = createContext()
-
-function cartReducer(state, action) {
-  switch (action.type) {
-    case 'ADD_ITEM': {
-      const existing = state.items.find(
-        item => item.id === action.payload.id && item.selectedSize === action.payload.selectedSize && item.selectedColor === action.payload.selectedColor
-      )
-      if (existing) {
-        return {
-          ...state,
-          items: state.items.map(item =>
-            item.id === existing.id && item.selectedSize === existing.selectedSize && item.selectedColor === existing.selectedColor
-              ? { ...item, quantity: item.quantity + 1 }
-              : item
-          ),
-        }
-      }
-      return { ...state, items: [...state.items, { ...action.payload, quantity: 1 }] }
-    }
-    case 'REMOVE_ITEM':
-      return { ...state, items: state.items.filter((_, i) => i !== action.payload) }
-    case 'UPDATE_QUANTITY':
-      return {
-        ...state,
-        items: state.items.map((item, i) =>
-          i === action.payload.index ? { ...item, quantity: Math.max(1, action.payload.quantity) } : item
-        ),
-      }
-    case 'CLEAR_CART':
-      return { ...state, items: [] }
-    default:
-      return state
-  }
-}
-
-const initialState = { items: [] }
+const CART_ID_KEY = 'h2b-cart-id'
 
 export function CartProvider({ children }) {
-  const [state, dispatch] = useReducer(cartReducer, initialState, (initial) => {
-    try {
-      const stored = localStorage.getItem('h2b-cart')
-      return stored ? JSON.parse(stored) : initial
-    } catch {
-      return initial
-    }
-  })
+  const [cart, setCart] = useState(null)
 
   useEffect(() => {
-    localStorage.setItem('h2b-cart', JSON.stringify(state))
-  }, [state])
+    const cartId = localStorage.getItem(CART_ID_KEY)
+    if (!cartId) return
+    fetchCart(cartId)
+      .then((stored) => {
+        if (stored) setCart(stored)
+        else localStorage.removeItem(CART_ID_KEY)
+      })
+      .catch((e) => console.error('Cart restore failed:', e))
+  }, [])
 
-  const addItem = (product, selectedSize, selectedColor) =>
-    dispatch({ type: 'ADD_ITEM', payload: { ...product, selectedSize, selectedColor } })
-  const removeItem = (index) => dispatch({ type: 'REMOVE_ITEM', payload: index })
-  const updateQuantity = (index, quantity) => dispatch({ type: 'UPDATE_QUANTITY', payload: { index, quantity } })
-  const clearCart = () => dispatch({ type: 'CLEAR_CART' })
+  const applyCart = (next) => {
+    if (next) localStorage.setItem(CART_ID_KEY, next.id)
+    else localStorage.removeItem(CART_ID_KEY)
+    setCart(next)
+  }
 
-  const itemCount = state.items.reduce((sum, item) => sum + item.quantity, 0)
-  const subtotal = state.items.reduce((sum, item) => sum + item.price * item.quantity, 0)
+  const addItem = async (variantId, quantity = 1) => {
+    const next = cart
+      ? await addCartLine(cart.id, variantId, quantity)
+      : await createCart([{ merchandiseId: variantId, quantity }])
+    applyCart(next)
+  }
 
-  return (
-    <CartContext.Provider value={{ items: state.items, itemCount, subtotal, addItem, removeItem, updateQuantity, clearCart }}>
-      {children}
-    </CartContext.Provider>
-  )
+  const updateQuantity = async (lineId, quantity) => {
+    if (quantity < 1) return removeItem(lineId)
+    applyCart(await updateCartLine(cart.id, lineId, quantity))
+  }
+
+  const removeItem = async (lineId) => {
+    applyCart(await removeCartLine(cart.id, lineId))
+  }
+
+  const clearCart = () => applyCart(null)
+
+  const value = {
+    items: cart?.lines ?? [],
+    itemCount: cart?.totalQuantity ?? 0,
+    subtotal: cart?.subtotal ?? 0,
+    checkoutUrl: cart?.checkoutUrl ?? null,
+    addItem,
+    removeItem,
+    updateQuantity,
+    clearCart,
+  }
+
+  return <CartContext.Provider value={value}>{children}</CartContext.Provider>
 }
 
 export function useCart() {

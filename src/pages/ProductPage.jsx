@@ -2,13 +2,18 @@ import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { Heart, Share2, ChevronRight, ArrowLeft, ShoppingCart } from 'lucide-react'
 import { useCart } from '../context/CartContext'
-import ProductViewer3D from '../components/shop/ProductViewer3D'
 import ProductCard from '../components/shop/ProductCard'
 import Button from '../components/ui/Button'
 import ScrollReveal from '../components/ui/ScrollReveal'
 import Confetti from '../components/ui/Confetti'
 import { fetchProductByHandle, fetchProducts } from '../lib/shopify'
 import { formatPrice } from '../lib/format'
+
+const DOG_PHOTOS = [
+  { src: '/images/dog-bloodhound-vest.jpg', alt: 'Bloodhound wearing the cooling vest' },
+  { src: '/images/dog-fluffy-vest.jpg', alt: 'Fluffy dog wearing the cooling vest' },
+  { src: '/images/dog-poodle-vest.jpg', alt: 'Poodle wearing the cooling vest' },
+]
 
 function defaultSelection(product) {
   return Object.fromEntries(product.options.map((o) => [o.name, o.values[0]]))
@@ -113,7 +118,16 @@ export default function ProductPage() {
 
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
           <ScrollReveal>
-            <ProductViewer3D />
+            <img
+              src="/images/vest-cooling-harness.webp"
+              alt={product.name}
+              className="w-full h-[400px] lg:h-[500px] rounded-3xl object-cover bg-sand/30"
+            />
+            <div className="grid grid-cols-3 gap-3 mt-4">
+              {DOG_PHOTOS.map((photo) => (
+                <img key={photo.src} src={photo.src} alt={photo.alt} loading="lazy" className="w-full aspect-square rounded-2xl object-cover" />
+              ))}
+            </div>
             {product.images.length > 0 && (
               <div className="flex gap-3 mt-4">
                 {product.images.map((img, i) => (

@@ -51,9 +51,9 @@ export default function CTASection() {
           <ScrollReveal direction="left" delay={0.2}>
             <div className="flex gap-4">
               {[
-                { label: 'Free Shipping', value: 'On orders $50+' },
-                { label: 'Easy Returns', value: '30-day window' },
-                { label: 'Lifetime Warranty', value: 'On all leather' },
+                { label: 'Bite-Resistant', value: 'Built for curious chewers' },
+                { label: 'Breathable Mesh', value: 'Air moves, heat escapes' },
+                { label: 'Easy Cooling', value: 'Helps prevent heatstroke' },
               ].map((item) => (
                 <motion.div
                   key={item.label}

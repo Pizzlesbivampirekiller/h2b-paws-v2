@@ -85,7 +85,7 @@ export default function Footer() {
               <span className="font-serif text-xl font-semibold text-cream">H2B Paws</span>
             </Link>
             <p className="text-cream/40 text-sm leading-relaxed mb-6">
-              Luxury pet essentials for the modern companion. Crafted with care, designed to last.
+              Simple cooling gear for dogs. Just add water and keep your dog comfortable when the weather turns warm.
             </p>
             <div className="flex gap-3">
               {[Camera, MessageCircle, Film].map((Icon, i) => (

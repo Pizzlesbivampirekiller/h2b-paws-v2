@@ -127,7 +127,7 @@ export default function ProductPage() {
             <img
               src={gallery[activeImage].src}
               alt={gallery[activeImage].alt}
-              className="w-full h-[400px] lg:h-[500px] rounded-3xl object-cover bg-sand/30"
+              className="w-full h-[400px] lg:h-[500px] rounded-3xl object-contain bg-white"
             />
             <div className="flex flex-wrap gap-3 mt-4">
               {gallery.map((photo, i) => (

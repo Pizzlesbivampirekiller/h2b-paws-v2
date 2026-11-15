@@ -1,8 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Camera, MessageCircle, Film, Mail, ArrowRight } from 'lucide-react'
-import { useState } from 'react'
-import { motion } from 'framer-motion'
-import { useAdmin } from '../../context/AdminContext'
+import { Camera, MessageCircle, Film } from 'lucide-react'
 
 const footerLinks = {
   Shop: [
@@ -21,56 +18,9 @@ const footerLinks = {
 }
 
 export default function Footer() {
-  const { siteContent } = useAdmin()
-  const [email, setEmail] = useState('')
-  const [subscribed, setSubscribed] = useState(false)
-
-  const handleSubscribe = (e) => {
-    e.preventDefault()
-    if (email) {
-      setSubscribed(true)
-      setTimeout(() => { setSubscribed(false); setEmail('') }, 3000)
-    }
-  }
-
   return (
     <footer className="bg-charcoal text-cream/80">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Newsletter */}
-        <div className="py-16 lg:py-20 border-b border-cream/10">
-          <div className="max-w-2xl mx-auto text-center">
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="font-serif text-3xl lg:text-4xl text-cream mb-4"
-            >
-              {siteContent.footerTitle}
-            </motion.h2>
-            <p className="text-cream/50 mb-8">
-              {siteContent.footerDesc}
-            </p>
-            <form onSubmit={handleSubscribe} className="flex gap-2 max-w-md mx-auto">
-              <div className="flex-1 relative">
-                <Mail size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-cream/30" />
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Your email address"
-                  className="w-full pl-12 pr-4 py-3 bg-white/5 border border-cream/10 rounded-full text-cream placeholder:text-cream/30 focus:outline-none focus:border-terracotta/50 transition-colors"
-                />
-              </div>
-              <button
-                type="submit"
-                className="px-6 py-3 bg-terracotta text-cream rounded-full font-medium hover:bg-terracotta-dark transition-colors cursor-pointer whitespace-nowrap flex items-center gap-2"
-              >
-                {subscribed ? '✓ Subscribed!' : <><span>Subscribe</span> <ArrowRight size={16} /></>}
-              </button>
-            </form>
-          </div>
-        </div>
-
         {/* Links */}
         <div className="py-16 grid grid-cols-2 md:grid-cols-4 gap-10">
           <div className="col-span-2 md:col-span-1">

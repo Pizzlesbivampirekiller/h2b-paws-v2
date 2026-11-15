@@ -10,6 +10,8 @@ import ShopPage from './pages/ShopPage'
 import ProductPage from './pages/ProductPage'
 import ContactPage from './pages/ContactPage'
 import SupportPage from './pages/SupportPage'
+import TermsPage from './pages/TermsPage'
+import PrivacyPage from './pages/PrivacyPage'
 import CartPage from './pages/CartPage'
 import BlogPage from './pages/BlogPage'
 import BlogPostPage from './pages/BlogPostPage'
@@ -113,6 +115,8 @@ export default function App() {
           <Route path="/shop/:id" element={<PageTransition><ProductPage /></PageTransition>} />
           <Route path="/contact" element={<PageTransition><ContactPage /></PageTransition>} />
           <Route path="/support" element={<PageTransition><SupportPage /></PageTransition>} />
+          <Route path="/terms" element={<PageTransition><TermsPage /></PageTransition>} />
+          <Route path="/privacy" element={<PageTransition><PrivacyPage /></PageTransition>} />
           <Route path="/cart" element={<PageTransition><CartPage /></PageTransition>} />
           <Route path="/blog" element={<PageTransition><BlogPage /></PageTransition>} />
           <Route path="/blog/:slug" element={<PageTransition><BlogPostPage /></PageTransition>} />

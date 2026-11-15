@@ -111,8 +111,8 @@ export default function Footer() {
         <div className="py-6 border-t border-cream/10 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-cream/30">
           <p>© 2026 H2B Paws. All rights reserved.</p>
           <div className="flex gap-6">
-            <a href="#" className="hover:text-cream/50 transition-colors cursor-pointer">Privacy Policy</a>
-            <a href="#" className="hover:text-cream/50 transition-colors cursor-pointer">Terms of Service</a>
+            <Link to="/privacy" className="hover:text-cream/50 transition-colors cursor-pointer">Privacy Policy</Link>
+            <Link to="/terms" className="hover:text-cream/50 transition-colors cursor-pointer">Terms of Service</Link>
           </div>
         </div>
       </div>

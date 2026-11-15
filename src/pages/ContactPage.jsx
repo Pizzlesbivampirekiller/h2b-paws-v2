@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { MapPin, Phone, Mail, Clock } from 'lucide-react'
+import { MapPin, Phone, Clock } from 'lucide-react'
 import FAQAccordion from '../components/contact/FAQAccordion'
 import GlobeMap from '../components/contact/GlobeMap'
 import ScrollReveal from '../components/ui/ScrollReveal'
@@ -11,7 +11,6 @@ import { useAdmin } from '../context/AdminContext'
 const contactInfo = [
   { icon: MapPin, label: 'Visit Us', value: 'Shenzhen, China' },
   { icon: Phone, label: 'Call Us', value: '+1 (212) 555-PAWS' },
-  { icon: Mail, label: 'Email Us', value: 'song102889ss@outlook.com' },
   { icon: Clock, label: 'Hours', value: 'Mon–Sat: 10am–7pm\nSun: 12pm–5pm' },
 ]
 
@@ -76,7 +75,7 @@ export default function ContactPage() {
       {/* Contact info cards */}
       <section className="relative -mt-10 pb-16 bg-cream">
         <div className="max-w-5xl mx-auto px-6 lg:px-8">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {contactInfo.map((item, i) => (
               <motion.div
                 key={item.label}
@@ -135,6 +134,13 @@ export default function ContactPage() {
         <div className="max-w-5xl mx-auto px-6 lg:px-8">
           <ScrollReveal>
             <GlobeMap />
+            <div className="mt-8 space-y-3">
+              <h3 className="font-serif text-lg font-semibold text-charcoal">Our Locations</h3>
+              <div className="flex items-center gap-3 text-sm">
+                <span className="text-lg">🇨🇳</span>
+                <span className="font-medium text-charcoal">Shenzhen, China</span>
+              </div>
+            </div>
           </ScrollReveal>
         </div>
       </section>

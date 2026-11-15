@@ -9,7 +9,7 @@ const faqs = [
   },
   {
     q: 'Can I return or exchange an item?',
-    a: 'Absolutely. We offer a 30-day return window for any unused products in original packaging. Exchanges are free — just reach out to our team and we\'ll handle everything.',
+    a: 'Yes. Contact us before sending anything back and we will walk you through your options. Where returns are accepted, items must be unused, with tags, and in their original packaging. For change-of-mind returns, return shipping is at your expense, and refunds go back to your original payment method. Customers in the EU or UK may have a 14-day right to cancel under local law.',
   },
   {
     q: 'How do I find the right size for my pet?',
@@ -21,7 +21,7 @@ const faqs = [
   },
   {
     q: 'Do you offer a warranty?',
-    a: 'All leather products come with a lifetime craftsmanship warranty. Other products have a 1-year warranty against manufacturing defects. We stand behind every item we make.',
+    a: 'All H2B Paws products are covered by a 1-year warranty against manufacturing defects from the date of delivery. If your item arrives damaged or fails because of a defect, contact us with your order number and we will repair or replace it. This warranty does not cover normal wear, chewing, or damage from misuse.',
   },
 ]
 

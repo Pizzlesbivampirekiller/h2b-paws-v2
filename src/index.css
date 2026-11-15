@@ -1,13 +1,13 @@
 @import "tailwindcss";
 
 @theme {
-  --color-cream: #FAF7F2;
+  --color-cream: #F4F9FA;
   --color-charcoal: #1A1A1A;
-  --color-terracotta: #C47354;
-  --color-terracotta-dark: #A85D3F;
-  --color-sage: #8FA88F;
-  --color-sage-dark: #6E8B6E;
-  --color-sand: #E8D5C4;
+  --color-terracotta: #2F7F8C;
+  --color-terracotta-dark: #22626C;
+  --color-sage: #8FC9C4;
+  --color-sage-dark: #5CA8A3;
+  --color-sand: #D5EAEE;
   --color-golden: #D4A853;
   --color-cloud: #FFFFFF;
 
@@ -22,7 +22,7 @@ html {
 body {
   margin: 0;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  background-color: #FAF7F2;
+  background-color: #F4F9FA;
   color: #1A1A1A;
   overflow-x: hidden;
 }
@@ -40,7 +40,7 @@ body.cursor-hidden * {
 .custom-cursor {
   width: 32px;
   height: 32px;
-  border: 2px solid #C47354;
+  border: 2px solid #2F7F8C;
   border-radius: 50%;
   position: fixed;
   pointer-events: none;
@@ -53,14 +53,14 @@ body.cursor-hidden * {
 .custom-cursor.hover {
   width: 64px;
   height: 64px;
-  background: rgba(196, 115, 84, 0.15);
+  background: rgba(47, 127, 140, 0.15);
   border-color: #D4A853;
 }
 
 .custom-cursor-dot {
   width: 6px;
   height: 6px;
-  background: #C47354;
+  background: #2F7F8C;
   border-radius: 50%;
   position: fixed;
   pointer-events: none;
@@ -74,16 +74,16 @@ body.cursor-hidden * {
 }
 
 ::-webkit-scrollbar-track {
-  background: #FAF7F2;
+  background: #F4F9FA;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #C47354;
+  background: #2F7F8C;
   border-radius: 3px;
 }
 
 ::selection {
-  background: #C47354;
+  background: #2F7F8C;
   color: #FFFFFF;
 }
 
@@ -93,7 +93,7 @@ body.cursor-hidden * {
 }
 
 .skeleton {
-  background: linear-gradient(90deg, #E8D5C4 25%, #FAF7F2 50%, #E8D5C4 75%);
+  background: linear-gradient(90deg, #D5EAEE 25%, #F4F9FA 50%, #D5EAEE 75%);
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
 }

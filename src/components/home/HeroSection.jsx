@@ -30,7 +30,7 @@ function Particles({ count = 200 }) {
       <bufferGeometry>
         <bufferAttribute attach="attributes-position" count={count} array={positions} itemSize={3} />
       </bufferGeometry>
-      <pointsMaterial size={0.02} color="#C47354" sizeAttenuation transparent opacity={0.6} />
+      <pointsMaterial size={0.02} color="#2F7F8C" sizeAttenuation transparent opacity={0.6} />
     </points>
   )
 }

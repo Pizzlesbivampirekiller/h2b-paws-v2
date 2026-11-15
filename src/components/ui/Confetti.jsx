@@ -16,7 +16,7 @@ export default function Confetti({ active = false, duration = 2000 }) {
       vx: (Math.random() - 0.5) * 15,
       vy: (Math.random() - 0.7) * 12 - 3,
       size: Math.random() * 8 + 4,
-      color: ['#C47354', '#D4A853', '#8FA88F', '#E8D5C4', '#1A1A1A'][Math.floor(Math.random() * 5)],
+      color: ['#2F7F8C', '#D4A853', '#8FC9C4', '#D5EAEE', '#1A1A1A'][Math.floor(Math.random() * 5)],
       rotation: Math.random() * 360,
       rotationSpeed: (Math.random() - 0.5) * 10,
       opacity: 1,

@@ -16,7 +16,7 @@ function Globe() {
       <mesh ref={meshRef}>
         <Sphere args={[2, 64, 64]}>
           <MeshDistortMaterial
-            color="#C47354"
+            color="#2F7F8C"
             distort={0.2}
             speed={2}
             roughness={0.3}
@@ -30,7 +30,7 @@ function Globe() {
       <mesh>
         <Sphere args={[1.95, 64, 64]}>
           <meshStandardMaterial
-            color="#E8D5C4"
+            color="#D5EAEE"
             roughness={0.5}
             metalness={0.1}
             transparent
@@ -41,8 +41,8 @@ function Globe() {
       {/* Location pins */}
       {[
         { lat: 40.7, lng: -74, color: '#D4A853', label: 'New York' },
-        { lat: 48.9, lng: 2.3, color: '#C47354', label: 'Paris' },
-        { lat: 35.7, lng: 139.7, color: '#8FA88F', label: 'Tokyo' },
+        { lat: 48.9, lng: 2.3, color: '#2F7F8C', label: 'Paris' },
+        { lat: 35.7, lng: 139.7, color: '#8FC9C4', label: 'Tokyo' },
       ].map((pin, i) => {
         const phi = (90 - pin.lat) * (Math.PI / 180)
         const theta = (pin.lng + 180) * (Math.PI / 180)

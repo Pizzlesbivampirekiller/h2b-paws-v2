@@ -40,7 +40,7 @@ const defaultContent = {
   "ctaHeadline": "Ready to treat\nyour companion to\nthe best?",
   "ctaHeadlineItalic": "the best",
   "ctaSubheading": "Join 10,000+ pet parents who've upgraded their companion's lifestyle.",
-  "aboutTitle": "Crafting luxury for the modern companion",
+  "aboutTitle": "Cooling comfort for the modern companion",
   "aboutDesc": "Born from a belief that pets deserve the best.",
   "contactTitle": "We'd love to hear from you",
   "contactDesc": "Whether it's a question about sizing, a custom order request, or just saying hello.",

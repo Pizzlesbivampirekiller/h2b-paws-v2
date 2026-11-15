@@ -2,7 +2,7 @@ import { useRef, useState } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { Float, MeshDistortMaterial, Environment, ContactShadows } from '@react-three/drei'
 
-function ProductShape({ color = '#C47354', hovered }) {
+function ProductShape({ color = '#2F7F8C', hovered }) {
   const meshRef = useRef()
 
   useFrame((state) => {
@@ -51,7 +51,7 @@ export default function ProductViewer3D({ productColor }) {
         <ambientLight intensity={0.6} />
         <directionalLight position={[5, 5, 5]} intensity={0.8} />
         <pointLight position={[-3, 2, 3]} intensity={0.5} color="#D4A853" />
-        <ProductShape color={productColor || '#C47354'} hovered={hovered} />
+        <ProductShape color={productColor || '#2F7F8C'} hovered={hovered} />
         <ContactShadows position={[0, -1.5, 0]} opacity={0.4} scale={5} blur={2.5} />
         <Environment preset="studio" />
       </Canvas>

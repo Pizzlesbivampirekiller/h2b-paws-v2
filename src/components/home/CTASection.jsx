@@ -26,9 +26,6 @@ export default function CTASection() {
               ))}
               <span className="italic text-terracotta">{siteContent.ctaHeadlineItalic}</span>?
             </h2>
-            <p className="text-cream/50 text-lg max-w-md mb-8 leading-relaxed">
-              {siteContent.ctaSubheading}
-            </p>
             <div className="flex flex-wrap gap-4">
               <a href="https://shop.h2bpaws.com" target="_blank" rel="noopener noreferrer">
                 <Button variant="terracotta" size="lg">

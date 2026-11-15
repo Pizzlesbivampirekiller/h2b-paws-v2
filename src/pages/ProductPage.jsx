@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import { Heart, Share2, ChevronRight, ArrowLeft, ShoppingCart } from 'lucide-react'
+import { ChevronRight, ArrowLeft, ShoppingCart } from 'lucide-react'
 import { useCart } from '../context/CartContext'
 import ProductCard from '../components/shop/ProductCard'
 import Button from '../components/ui/Button'
@@ -204,27 +204,8 @@ export default function ProductPage() {
                   <ShoppingCart size={18} />
                   {addedToCart ? 'Added!' : adding ? 'Adding...' : 'Add to Cart'}
                 </Button>
-                <button className="w-14 h-14 flex items-center justify-center rounded-full border-2 border-sand hover:border-red-300 hover:text-red-400 transition-all cursor-pointer">
-                  <Heart size={20} />
-                </button>
-                <button className="w-14 h-14 flex items-center justify-center rounded-full border-2 border-sand hover:border-terracotta hover:text-terracotta transition-all cursor-pointer">
-                  <Share2 size={20} />
-                </button>
               </div>
               {error && <p className="text-sm text-red-500 mb-6">{error}</p>}
-
-              <div className="grid grid-cols-3 gap-4 pt-8 mt-4 border-t border-sand">
-                {[
-                  { icon: '🌿', label: 'Eco-Friendly' },
-                  { icon: '✨', label: 'Handcrafted' },
-                  { icon: '🛡️', label: 'Lifetime Warranty' },
-                ].map((f) => (
-                  <div key={f.label} className="text-center">
-                    <span className="text-2xl block mb-1">{f.icon}</span>
-                    <span className="text-xs text-charcoal/40">{f.label}</span>
-                  </div>
-                ))}
-              </div>
             </div>
           </ScrollReveal>
         </div>

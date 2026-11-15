@@ -3,6 +3,12 @@ import ScrollReveal from '../ui/ScrollReveal'
 import SectionHeading from '../ui/SectionHeading'
 import { useAdmin } from '../../context/AdminContext'
 
+const PHOTOS = [
+  { src: '/images/dog-fluffy-tree.jpg', alt: 'Fluffy dog resting outdoors' },
+  { src: '/images/dog-poodle-boardwalk.jpg', alt: 'Poodle on a boardwalk' },
+  { src: '/images/dog-bloodhound-field.jpg', alt: 'Bloodhound in a field' },
+]
+
 export default function CategoryCards() {
   const { siteContent } = useAdmin()
   return (
@@ -28,6 +34,21 @@ export default function CategoryCards() {
             </div>
           </a>
         </ScrollReveal>
+
+        <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+          {PHOTOS.map((photo, i) => (
+            <ScrollReveal key={photo.src} delay={i * 0.1}>
+              <div className="relative overflow-hidden rounded-3xl aspect-[4/3] group">
+                <img
+                  src={photo.src}
+                  alt={photo.alt}
+                  loading="lazy"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+              </div>
+            </ScrollReveal>
+          ))}
+        </div>
       </div>
     </section>
   )

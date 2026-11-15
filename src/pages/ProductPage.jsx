@@ -15,6 +15,13 @@ const DOG_PHOTOS = [
   { src: '/images/dog-poodle-vest.jpg', alt: 'Poodle wearing the cooling vest' },
 ]
 
+const EXTRA_PHOTOS = {
+  'cooling-clothes': [
+    { src: '/images/vest-cooling-harness.webp', alt: 'Cooling dog vest' },
+    ...DOG_PHOTOS,
+  ],
+}
+
 function defaultSelection(product) {
   return Object.fromEntries(product.options.map((o) => [o.name, o.values[0]]))
 }
@@ -83,8 +90,7 @@ export default function ProductPage() {
   const variant = findVariant(product, selected)
   const canAdd = Boolean(variant?.available) && !adding
   const gallery = [
-    { src: '/images/vest-cooling-harness.webp', alt: product.name },
-    ...DOG_PHOTOS,
+    ...(EXTRA_PHOTOS[handle] ?? []),
     ...product.images.map((src, i) => ({ src, alt: `${product.name} ${i + 1}` })),
   ]
 

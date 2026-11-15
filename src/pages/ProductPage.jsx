@@ -37,6 +37,7 @@ export default function ProductPage() {
   const [addedToCart, setAddedToCart] = useState(false)
   const [showConfetti, setShowConfetti] = useState(false)
   const [error, setError] = useState(null)
+  const [activeImage, setActiveImage] = useState(0)
 
   useEffect(() => {
     let active = true
@@ -81,6 +82,11 @@ export default function ProductPage() {
 
   const variant = findVariant(product, selected)
   const canAdd = Boolean(variant?.available) && !adding
+  const gallery = [
+    { src: '/images/vest-cooling-harness.webp', alt: product.name },
+    ...DOG_PHOTOS,
+    ...product.images.map((src, i) => ({ src, alt: `${product.name} ${i + 1}` })),
+  ]
 
   const handleAddToCart = async () => {
     if (!canAdd) return
@@ -119,24 +125,24 @@ export default function ProductPage() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
           <ScrollReveal>
             <img
-              src="/images/vest-cooling-harness.webp"
-              alt={product.name}
+              src={gallery[activeImage].src}
+              alt={gallery[activeImage].alt}
               className="w-full h-[400px] lg:h-[500px] rounded-3xl object-cover bg-sand/30"
             />
-            <div className="grid grid-cols-3 gap-3 mt-4">
-              {DOG_PHOTOS.map((photo) => (
-                <img key={photo.src} src={photo.src} alt={photo.alt} loading="lazy" className="w-full aspect-square rounded-2xl object-cover" />
+            <div className="flex flex-wrap gap-3 mt-4">
+              {gallery.map((photo, i) => (
+                <button
+                  key={photo.src}
+                  type="button"
+                  onClick={() => setActiveImage(i)}
+                  className={`w-16 h-16 rounded-xl overflow-hidden bg-sand/30 border-2 transition-colors cursor-pointer ${
+                    i === activeImage ? 'border-terracotta' : 'border-transparent hover:border-terracotta/50'
+                  }`}
+                >
+                  <img src={photo.src} alt={photo.alt} loading="lazy" className="w-full h-full object-cover" />
+                </button>
               ))}
             </div>
-            {product.images.length > 0 && (
-              <div className="flex gap-3 mt-4">
-                {product.images.map((img, i) => (
-                  <div key={img} className="w-20 h-20 rounded-xl overflow-hidden bg-sand/30 border-2 border-transparent hover:border-terracotta transition-colors cursor-pointer">
-                    <img src={img} alt={`${product.name} ${i + 1}`} className="w-full h-full object-cover" />
-                  </div>
-                ))}
-              </div>
-            )}
           </ScrollReveal>
 
           <ScrollReveal direction="left">

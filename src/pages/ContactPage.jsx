@@ -9,7 +9,7 @@ import Button from '../components/ui/Button'
 import { useAdmin } from '../context/AdminContext'
 
 const contactInfo = [
-  { icon: MapPin, label: 'Visit Us', value: '127 Wooster Street\nSoHo, New York, NY 10012' },
+  { icon: MapPin, label: 'Visit Us', value: 'Shenzhen, China' },
   { icon: Phone, label: 'Call Us', value: '+1 (212) 555-PAWS' },
   { icon: Mail, label: 'Email Us', value: 'song102889ss@outlook.com' },
   { icon: Clock, label: 'Hours', value: 'Mon–Sat: 10am–7pm\nSun: 12pm–5pm' },
@@ -135,20 +135,6 @@ export default function ContactPage() {
         <div className="max-w-5xl mx-auto px-6 lg:px-8">
           <ScrollReveal>
             <GlobeMap />
-            <div className="mt-8 space-y-3">
-              <h3 className="font-serif text-lg font-semibold text-charcoal">Our Locations</h3>
-              {[
-                { city: 'New York', flag: '🇺🇸', role: 'Flagship & HQ' },
-                { city: 'Paris', flag: '🇫🇷', role: 'European Atelier' },
-                { city: 'Tokyo', flag: '🇯🇵', role: 'Asia-Pacific Hub' },
-              ].map((loc) => (
-                <div key={loc.city} className="flex items-center gap-3 text-sm">
-                  <span className="text-lg">{loc.flag}</span>
-                  <span className="font-medium text-charcoal">{loc.city}</span>
-                  <span className="text-charcoal/30">— {loc.role}</span>
-                </div>
-              ))}
-            </div>
           </ScrollReveal>
         </div>
       </section>

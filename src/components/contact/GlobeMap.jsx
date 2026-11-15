@@ -40,9 +40,7 @@ function Globe() {
       </mesh>
       {/* Location pins */}
       {[
-        { lat: 40.7, lng: -74, color: '#D4A853', label: 'New York' },
-        { lat: 48.9, lng: 2.3, color: '#2F7F8C', label: 'Paris' },
-        { lat: 35.7, lng: 139.7, color: '#8FC9C4', label: 'Tokyo' },
+        { lat: 22.5, lng: 114.1, color: '#D4A853', label: 'Shenzhen' },
       ].map((pin, i) => {
         const phi = (90 - pin.lat) * (Math.PI / 180)
         const theta = (pin.lng + 180) * (Math.PI / 180)

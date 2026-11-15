@@ -27,12 +27,12 @@ export default function CTASection() {
               <span className="italic text-terracotta">{siteContent.ctaHeadlineItalic}</span>?
             </h2>
             <div className="flex flex-wrap gap-4">
-              <a href="https://shop.h2bpaws.com" target="_blank" rel="noopener noreferrer">
+              <Link to="/shop">
                 <Button variant="terracotta" size="lg">
                   Shop Now
                   <ArrowRight size={18} />
                 </Button>
-              </a>
+              </Link>
               <Link to="/contact">
                 <Button
                   variant="outline"

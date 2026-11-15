@@ -6,7 +6,7 @@ import { useAdmin } from '../../context/AdminContext'
 
 const footerLinks = {
   Shop: [
-    { label: 'All Products', path: 'https://shop.h2bpaws.com', external: true },
+    { label: 'All Products', path: '/shop' },
     { label: 'Collars & Leashes', path: '/shop?category=accessories' },
     { label: 'Beds & Mats', path: '/shop?category=beds' },
     { label: 'Food & Treats', path: '/shop?category=food' },
@@ -105,15 +105,9 @@ export default function Footer() {
               <ul className="space-y-3">
                 {links.map((link) => (
                   <li key={link.label}>
-                    {link.external ? (
-                      <a href={link.path} target="_blank" rel="noopener noreferrer" className="text-sm text-cream/40 hover:text-terracotta transition-colors cursor-pointer">
-                        {link.label}
-                      </a>
-                    ) : (
-                      <Link to={link.path} className="text-sm text-cream/40 hover:text-terracotta transition-colors cursor-pointer">
-                        {link.label}
-                      </Link>
-                    )}
+                    <Link to={link.path} className="text-sm text-cream/40 hover:text-terracotta transition-colors cursor-pointer">
+                      {link.label}
+                    </Link>
                   </li>
                 ))}
               </ul>

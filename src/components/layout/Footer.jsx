@@ -7,10 +7,6 @@ import { useAdmin } from '../../context/AdminContext'
 const footerLinks = {
   Shop: [
     { label: 'All Products', path: '/shop' },
-    { label: 'Collars & Leashes', path: '/shop?category=accessories' },
-    { label: 'Beds & Mats', path: '/shop?category=beds' },
-    { label: 'Food & Treats', path: '/shop?category=food' },
-    { label: 'Clothing', path: '/shop?category=clothing' },
   ],
   Company: [
     { label: 'Journal', path: '/blog' },
@@ -18,11 +14,7 @@ const footerLinks = {
     { label: 'Careers', path: '/contact' },
   ],
   Support: [
-    { label: 'FAQ', path: '/contact' },
-    { label: 'Shipping', path: '/contact' },
-    { label: 'Returns', path: '/contact' },
-    { label: 'Size Guide', path: '/contact' },
-    { label: 'Track Order', path: '/contact' },
+    { label: 'Shipping & Returns', path: '/support' },
   ],
 }
 

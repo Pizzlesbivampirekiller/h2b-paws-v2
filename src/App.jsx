@@ -9,6 +9,7 @@ import HomePage from './pages/HomePage'
 import ShopPage from './pages/ShopPage'
 import ProductPage from './pages/ProductPage'
 import ContactPage from './pages/ContactPage'
+import SupportPage from './pages/SupportPage'
 import CartPage from './pages/CartPage'
 import BlogPage from './pages/BlogPage'
 import BlogPostPage from './pages/BlogPostPage'
@@ -111,6 +112,7 @@ export default function App() {
           <Route path="/shop" element={<PageTransition><ShopPage /></PageTransition>} />
           <Route path="/shop/:id" element={<PageTransition><ProductPage /></PageTransition>} />
           <Route path="/contact" element={<PageTransition><ContactPage /></PageTransition>} />
+          <Route path="/support" element={<PageTransition><SupportPage /></PageTransition>} />
           <Route path="/cart" element={<PageTransition><CartPage /></PageTransition>} />
           <Route path="/blog" element={<PageTransition><BlogPage /></PageTransition>} />
           <Route path="/blog/:slug" element={<PageTransition><BlogPostPage /></PageTransition>} />

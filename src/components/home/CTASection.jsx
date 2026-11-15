@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import ScrollReveal from '../ui/ScrollReveal'
 import Button from '../ui/Button'
@@ -42,25 +41,6 @@ export default function CTASection() {
                   Get in Touch
                 </Button>
               </Link>
-            </div>
-          </ScrollReveal>
-
-          <ScrollReveal direction="left" delay={0.2}>
-            <div className="flex gap-4">
-              {[
-                { label: 'Free Shipping', value: 'On orders $50+' },
-                { label: 'Easy Returns', value: '30-day window' },
-                { label: 'Lifetime Warranty', value: 'On all leather' },
-              ].map((item) => (
-                <motion.div
-                  key={item.label}
-                  whileHover={{ y: -5 }}
-                  className="flex-1 p-5 rounded-2xl bg-cream/5 backdrop-blur border border-cream/10 text-center"
-                >
-                  <div className="font-serif text-xl font-semibold text-cream mb-1">{item.label}</div>
-                  <div className="text-sm text-cream/40">{item.value}</div>
-                </motion.div>
-              ))}
             </div>
           </ScrollReveal>
         </div>
